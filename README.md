@@ -18,20 +18,20 @@ General Electric, in the 1950’s, was puzzled as to why their household applian
 Forrester, after finding out how the corporation made hiring and inventory decisions sought to tackle the problem using system dynamics and simulation--originally using just a pencil and a few pages in a notebook to get an idea of information flow through the company. Through modeling the process (that eventually became computerized for simulation), Forrester accounted how individual managers at the level of sales , distribution and production responded to the information locally available to them as they tried to control their piece of the organization.
 Forrester found the managers in each link, in what today is called a supply chain, were responding in a rational fashion to the incentives and information they faced. They were often making choices based on their need to provide good customer service while avoiding excessive inventories. The resulting changes in orders, production, hiring, and other decisions fed back to alter inventories, change prices and advertising rates. The feedback structure of the supply chain amplified each response into persistent cyclical swings, now called the Bullwhip effect. The Bullwhip affect was attributed to exist--even in a state of steady demand--because at every level management relied on their next in chain customer and supplier for demand forecasting. 
 
-#Loading the example Historical Database
+##Loading the example Historical Database
 
  The example I used to build and test the concept was the diffusion of the internet (the product) through countries (the communities)
  The example data is stored in mysql which you can download at:
  
- http://dev.mysql.com/downloads/mysql/
+ [MySQL download](http://dev.mysql.com/downloads/mysql/)
 
-1. rate_of_adoption/bass_history.txt 
+    *rate_of_adoption/bass_history.txt 
 
    The file can be loaded to your MySQL database with the mysql_bass_db_creation.txt script. 
    Be sure to change the location of the file "bass_history.txt" within mysql_bass_db_creation.txt
    to wherever the directory it the file is in on your machine.
 
-#Forecasting Model Pipeline: 
+##Forecasting Model Pipeline: 
 
 The idea behind the rate_of_adoption section is that you have some product and you can get some idea of the expected 
 time and volume of adoption. So, the first question is IF it will be adopted (this is a similiarity/recommendation problem)
@@ -51,37 +51,35 @@ One last point is that I use an idea I termed the basic diffusion number to make
 i propose function as the tipping point within a community. Before adoption gets to this point expected growth
 is linear. After adoption gets to this point expected growth is exponential. 
 
-Here are the 5 steps to producing a product diffusion forecast
+####Here are the 5 steps to producing a product diffusion forecast
 
 1. Determine:  Historical similarity of innovation and imitation -> Use python program diffusion_query_branch.py 
 to generate a p and q (these are called the imitation and innovation coefficient in the bass model). 
 
-You gather past products, calculate their diffusion rate and compare your present product to them. 
+    *You gather past products, calculate their diffusion rate and compare your present product to them. 
 
 2.	Gather Community data: population size, and adoption statistics - >  Use community test.py split data on the 
 year where Basic diffusion number = 1 (or is projected to equal 6.67% adoption). 
 
-You gather data on the size and past rates of adoption within your target community and project when (and if) you will reach the critical tipping point. 
+    *You gather data on the size and past rates of adoption within your target community and project when (and if) you will reach the critical tipping point. 
 
 3.	Execute forecasting programs from that point in time (the basic diffusion number)
 using the bass model of diffusion. I benchmark the diffusion forecast versus
 Rob J. Hynman's excellent forecast library in R: diffusion_number_bass.r, diffusion_rforecast.r
 
-These programs output both csv tables and png images of the forecast 
+    *The programs output both csv tables and png images of the forecast 
 they save the output forecast tables to text (csv) files and images to png files
 
-4.	Next we go back to the commmunity using the tables. 
-
-Execute python program population_size.py: This outputs the forecasted adoption at a given year by
+4.	Next we go back to the commmunity using the tables. Execute python program population_size.py: This outputs the forecasted adoption at a given year by
 combining the projected adoption percentage  with the size of the community. 
 
-Example: If its projected  20% adoption in 1999 of 1 billion people in China, the program outputs 200 million. 
+    *Example: If its projected  20% adoption in 1999 of 1 billion people in China, the program outputs 200 million. 
 
 5.	Compare accuracy between diffusion_number_bass and diffusion_rforecast or just use to get an estimate 
 of adoption via each method at a future time
 
 
-#Future Plans
+##Future Plans
 
  I've written an improved similiary engine that uses attributes of items instead of ratings, 
  though it is not yet integrated into this library.
@@ -92,7 +90,7 @@ of adoption via each method at a future time
  diffusion questions. 
    
 
-#License
+##License
 
 Copyright 2013 Luke Otterblad
 
