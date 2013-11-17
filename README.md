@@ -25,13 +25,13 @@ Forrester found the managers in each link, in what today is called a supply chai
  
  [MySQL download](http://dev.mysql.com/downloads/mysql/)
 
-    *rate_of_adoption/bass_history.txt 
+   * rate_of_adoption/bass_history.txt 
 
    The file can be loaded to your MySQL database with the mysql_bass_db_creation.txt script. 
    Be sure to change the location of the file "bass_history.txt" within mysql_bass_db_creation.txt
    to wherever the directory it the file is in on your machine.
 
-##Forecasting Model Pipeline: 
+##Forecasting Model Pipeline 
 
 The idea behind the rate_of_adoption section is that you have some product and you can get some idea of the expected 
 time and volume of adoption. So, the first question is IF it will be adopted (this is a similiarity/recommendation problem)
@@ -56,24 +56,24 @@ is linear. After adoption gets to this point expected growth is exponential.
 1. Determine:  Historical similarity of innovation and imitation -> Use python program diffusion_query_branch.py 
 to generate a p and q (these are called the imitation and innovation coefficient in the bass model). 
 
-    *You gather past products, calculate their diffusion rate and compare your present product to them. 
+    * You gather past products, calculate their diffusion rate and compare your present product to them. 
 
 2.	Gather Community data: population size, and adoption statistics - >  Use community test.py split data on the 
 year where Basic diffusion number = 1 (or is projected to equal 6.67% adoption). 
 
-    *You gather data on the size and past rates of adoption within your target community and project when (and if) you will reach the critical tipping point. 
+    * You gather data on the size and past rates of adoption within your target community and project when (and if) you will reach the critical tipping point. 
 
 3.	Execute forecasting programs from that point in time (the basic diffusion number)
 using the bass model of diffusion. I benchmark the diffusion forecast versus
 Rob J. Hynman's excellent forecast library in R: diffusion_number_bass.r, diffusion_rforecast.r
 
-    *The programs output both csv tables and png images of the forecast 
+    * The programs output both csv tables and png images of the forecast 
 they save the output forecast tables to text (csv) files and images to png files
 
 4.	Next we go back to the commmunity using the tables. Execute python program population_size.py: This outputs the forecasted adoption at a given year by
 combining the projected adoption percentage  with the size of the community. 
 
-    *Example: If its projected  20% adoption in 1999 of 1 billion people in China, the program outputs 200 million. 
+    * Example: If its projected  20% adoption in 1999 of 1 billion people in China, the program outputs 200 million. 
 
 5.	Compare accuracy between diffusion_number_bass and diffusion_rforecast or just use to get an estimate 
 of adoption via each method at a future time
