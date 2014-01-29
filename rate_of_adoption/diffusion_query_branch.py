@@ -6,8 +6,6 @@
 # Author:      Luke
 #
 # Created:     01/10/2012
-# Copyright:   (c) Luke 2013
-# Licence:      GPL
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 
